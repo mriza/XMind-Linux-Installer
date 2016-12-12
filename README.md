@@ -13,3 +13,5 @@ How to install XMind 8 on Linux
 username is the user that will be use/run the software. Since XMind will need a data directory in the user home named 'workspace'
 
 This script is an automation of [this](https://cloud.xmind.net/edit/workbooks/3e990ee3-7f3d-413d-8f80-7e2f692d7dc4) process
+
+![process](https://raw.githubusercontent.com/mriza/XMind-Linux-Installer/master/How-to-install-XMind-8-on-generic-Linux.png)
