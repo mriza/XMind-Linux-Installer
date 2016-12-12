@@ -8,4 +8,4 @@ How to install XMind 8 on Linux
 3. If you are installing on 32bit system, run `sudo xmind-i386.installer.sh username`
 4. If you are installing on 64bit system, run `sudo xmind-amd64.installer.sh username`
 
-username is the user that will be use/run the software. Since XMind will need a data directory in the user home namded 'workspace'
+username is the user that will be use/run the software. Since XMind will need a data directory in the user home named 'workspace'
