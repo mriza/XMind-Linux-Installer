@@ -14,4 +14,4 @@ username is the user that will be use/run the software. Since XMind will need a 
 
 This script is an automation of [this process](http://www.xmind.net/m/PuDC)
 
-![process](https://raw.githubusercontent.com/mriza/XMind-Linux-Installer/master/How-to-install-XMind-8-on-generic-Linux-v.png)
+![process](https://xmindshare.s3.amazonaws.com/preview/PuDC-FwEzHqO-77495.png)
