@@ -24,6 +24,7 @@ elif $ARCH='i686' then
 else
 	echo 'Sorry, cannot verify your kernel version'
 	echo 'The installer will now exit'
+	exit
 fi
 
 unzip xmind-8-linux.zip -d xmind
