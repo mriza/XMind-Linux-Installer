@@ -1,0 +1,4 @@
+prerequisite
+
+debian-ubuntu
+default-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0
