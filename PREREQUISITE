@@ -1,4 +1,7 @@
 prerequisite
 
-debian-ubuntu
-default-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0
+Debian, Ubuntu
+sudo apt-get install default-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0
+
+Fedora, CentOS, RHEL
+sudo yum install java webkitgtk gtk2 glibc lame
