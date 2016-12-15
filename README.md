@@ -5,8 +5,8 @@ How to install XMind 8 on Linux
 
 1. Download XMind from [http://www.xmind.net/download/linux/] (http://www.xmind.net/download/linux/)
 2. Make sure the dependencies are satisfied for your distribution
- - Debian, Ubuntu, Mint or other Linux distribution with .deb package. `sudo apt-get install default-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0`
- - Fedora, CentOS, RHEL, or other Linux distribution with .rpm packages. `sudo yum install java webkitgtk gtk2 glibc lame`
+ - Debian, Ubuntu, Mint or other Linux distribution with .deb package. `sudo apt-get install unzip install default-jre libgtk2.0-0 libwebkitgtk-1.0-0 lame libc6 libglib2.0-0`
+ - Fedora, CentOS, RHEL, or other Linux distribution with .rpm packages. `sudo yum install unzip java webkitgtk gtk2 glibc lame`
 3. Place this script in the same directory
 4. Run the installer, `sudo xmind-installer.sh username`
 
