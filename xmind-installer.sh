@@ -17,38 +17,49 @@
 
 USER=$1
 ARCH=`uname -m`
-if [ $ARCH = "x86_64" ]
+XMIND_DIR="/opt/xmind"
+if [ $ARCH == "x86_64" ]
 then
-	XMIN_DIR="/opt/xmind/XMind_amd64"
-elif [ $ARCH = "i686" ]
+	VERSION="XMind_amd64"
+	BIN_DIR=$XMIND_DIR/$VERSION
+elif [ $ARCH == "i686" ]
 then
-	XMIND_DIR="/opt/xmind/XMind_i386"
+	VERSION="XMind_i386"
+	BIN_DIR=$XMIND_DIR/$VERSION
 else
 	echo 'Sorry, cannot verify your kernel version'
 	echo 'The installer will now exit'
 	exit
 fi
 
+echo "Extracting files..."
 unzip -q xmind-8-linux.zip -d xmind
+echo "Installing..."
 mv xmind /opt/
-mkdir -p /usr/share/fonts/truetype/xmind
-cp -R /opt/xmind/fonts/* /usr/share/fonts/truetype/xmind/
+echo "Installing additional fonts..."
+mkdir -p /usr/share/fonts/xmind
+cp -R $XMIND_DIR/fonts/* /usr/share/fonts/xmind/
 fc-cache -f
 
-cat <<EOF | tee /usr/share/applications/xmind8.desktop
-[Desktop Entry]
-Comment=Create and share mind maps.
-Exec=/opt/xmind/$DIR/XMind %F
-Name=XMind
-Terminal=false
-Type=Application
-Categories=Office;
-Icon=xmind
-EOF
+echo "Creating laucher..."
+echo "" > /usr/share/applications/xmind8.desktop
+echo "[Desktop Entry]" >> /usr/share/applications/xmind8.desktop
+echo "Comment=Create and share mind maps." >> /usr/share/applications/xmind8.desktop
+echo "Exec=$BIN_DIR/XMind %F" >> /usr/share/applications/xmind8.desktop
+echo "Name=XMind" >> /usr/share/applications/xmind8.desktop
+echo "Terminal=false" >> /usr/share/applications/xmind8.desktop
+echo "Type=Application" >> /usr/share/applications/xmind8.desktop
+echo "Categories=Office;" >> /usr/share/applications/xmind8.desktop
+echo "Icon=xmind" >> /usr/share/applications/xmind8.desktop
 
-sed -i "s/\.\.\/workspace/@user\.home\/workspace/" $XMIND_DIR/XMind.ini
-sed -i "s/\.\/configuration/$XMIND_DIR/\.configuration/" $XMIND_DIR/XMind.ini
-sed -i "s/^\.\./\/opt\/xmind/" $XMIND_DIR/XMind.ini
-
+echo "Creating workspace..."
 mkdir /home/$USER/workspace
 chown -R $USER: /home/$USER/workspace
+
+echo "Post installatin configurations..."
+sed -i "s/\.\.\/workspace/@user\.home\/workspace/g" "$BIN_DIR/XMind.ini"
+sed -i "s/\.\/configuration/\/opt\/xmind\/$VERSION\/configuration/g" "$BIN_DIR/XMind.ini"
+sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
+chmod a+w $BIN_DIR/configuration
+
+echo "Installation finished. Happy mind mapping!"
