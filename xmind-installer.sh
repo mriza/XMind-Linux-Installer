@@ -46,8 +46,9 @@ Icon=xmind
 EOF
 
 sed -i "s/\.\.\/workspace/@user\.home\/workspace/" /opt/xmind/$(DIR)/XMind.ini
+sed -i "s/\.\/configuration/@user\.home\/\.configuration/" /opt/xmind/$(DIR)/XMind.ini
 sed -i "s/^\.\./\/opt\/xmind/" /opt/xmind/$(DIR)/XMind.ini
-sed -i "s/^\.\/configuration/@user\.home\/\.configuration/" /opt/xmind/$(DIR)/XMind.ini
+
 
 mkdir /home/$(USER)/workspace
 cp -R /opt/xmind/$(DIR)/configuration /home/$(USER)/
