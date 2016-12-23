@@ -1,17 +1,17 @@
 #!/bin/bash
 ##
-## XMind 8 Installer 
+## XMind 8 Installer
 ##
 ## Author: Mohammad Riza Nurtam
 ## Email: muhammadriza@gmail.com
 ##
 ## Licensed under GPL V3
 ## Please refer to https://www.gnu.org/licenses/gpl-3.0.en.html
-## 
+##
 ## How to use this script
 ## 1. run the script using privileged user or using sudo command
 ## 2. don't forget to pass the user of the program in the command argument
-## 
+##
 ## example
 ## sudo bash xmind8-installer.sh mriza
 
@@ -33,7 +33,6 @@ cd /opt/xmind
 mkdir -p /usr/share/fonts/truetype/xmind
 cp -R fonts/* /usr/share/fonts/truetype/xmind/
 fc-cache -f
-chmod a+w /opt/xmind/$(DIR)/configuration
 
 cat <<EOF | tee /usr/share/applications/xmind8.desktop
 [Desktop Entry]
@@ -46,6 +45,9 @@ Categories=Office;
 Icon=xmind
 EOF
 
-sed -i "s/\.\.\/workspace/\/home\/${USER}\/workspace/" /opt/xmind/$(DIR)/XMind.ini
+sed -i "s/\.\.\/workspace/@user.home\/workspace/" /opt/xmind/$(DIR)/XMind.ini
 sed -i "s/^\.\./\/opt\/xmind/" /opt/xmind/$(DIR)/XMind.ini
-sed -i "s/^\./\/opt\/xmind\/$(DIR)/" /opt/xmind/$(DIR)/XMind.ini
+sed -i "s/^\.\/configuration/@user.home/\.configuration" /opt/xmind/$(DIR)/XMind.ini
+
+mkdir /home/$(USER)/workspace
+cp -R /opt/xmind/$(DIR)/configuration /home/$(USER)/
