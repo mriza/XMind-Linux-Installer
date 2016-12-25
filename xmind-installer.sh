@@ -14,8 +14,13 @@
 ##
 ## example
 ## sudo bash xmind8-installer.sh mriza
+if [ -z "$1" ]
+then
+	echo "USAGE:
+	sudo xmind-installer.sh username"
+	exit 1
+fi
 
-USER=$1
 ARCH=`uname -m`
 XMIND_DIR="/opt/xmind"
 if [ $ARCH == "x86_64" ]
@@ -27,9 +32,9 @@ then
 	VERSION="XMind_i386"
 	BIN_DIR=$XMIND_DIR/$VERSION
 else
-	echo 'Sorry, cannot verify your kernel version'
+	echo 'Sorry, cannot verify your OS architecture'
 	echo 'The installer will now exit'
-	exit
+	exit 1
 fi
 
 echo "Extracting files..."
@@ -52,7 +57,7 @@ echo "Type=Application" >> /usr/share/applications/xmind8.desktop
 echo "Categories=Office;" >> /usr/share/applications/xmind8.desktop
 echo "Icon=xmind" >> /usr/share/applications/xmind8.desktop
 
-echo "Creating workspace..."
+echo "Creating workspaces..."
 mkdir /home/$USER/{workspace,.configuration}
 cp -R $BIN_DIR/configuration/* /home/$USER/.configuration
 chown -R $USER: /home/$USER/workspace /home/$USER/.configuration
