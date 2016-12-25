@@ -53,13 +53,14 @@ echo "Categories=Office;" >> /usr/share/applications/xmind8.desktop
 echo "Icon=xmind" >> /usr/share/applications/xmind8.desktop
 
 echo "Creating workspace..."
-mkdir /home/$USER/workspace
-chown -R $USER: /home/$USER/workspace
+mkdir /home/$USER/{workspace,.configuration}
+cp -R $BIN_DIR/configuration/* /home/$USER/.configuration
+chown -R $USER: /home/$USER/workspace /home/$USER/.configuration
 
 echo "Post installatin configurations..."
 sed -i "s/\.\.\/workspace/@user\.home\/workspace/g" "$BIN_DIR/XMind.ini"
-sed -i "s/\.\/configuration/\/opt\/xmind\/$VERSION\/configuration/g" "$BIN_DIR/XMind.ini"
+sed -i "s/\.\/configuration/@user\.home\/\.configuration/g" "$BIN_DIR/XMind.ini"
 sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
-chmod a+w $BIN_DIR/configuration
+#chmod a+w $BIN_DIR/configuration
 
 echo "Installation finished. Happy mind mapping!"
