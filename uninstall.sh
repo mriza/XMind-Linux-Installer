@@ -1,12 +1,40 @@
 #!/bin/bash
 USER=$1
-echo "Uninstalling"
+status_flag=0
+echo "Uninstalling\n"
 echo "Removing files..."
-sudo rm -rfv /opt/xmind/
+rm -rfv /opt/xmind/
+if [ $? != 0 ]
+then
+  status_flag=1
+  echo "Failed"
+fi
 echo "Removing user data..."
-sudo rm -rfv /home/$USER/workspace
+rm -rfv /home/$USER/workspace
+if [ $? != 0 ]
+then
+  status_flag=1
+  echo "Failed"
+fi
 echo "Removing configs..."
-sudo rm -rfv /home/$USER/.configuration
+rm -rfv /home/$USER/.configuration
+if [ $? != 0 ]
+then
+  status_flag=1
+  echo "Failed"
+fi
 echo "Removing launcher..."
-sudo rm -rfv /usr/share/applications/xmind8.desktop
-echo "Uninstallation finished"
+rm -rfv /usr/share/applications/xmind8.desktop
+if [ $? != 0 ]
+then
+  status_flag=1
+  echo "Failed"
+fi
+if [ $status_flag != 0 ]
+then
+  echo "Some errors found..."
+  exit 1
+else
+  echo "Uninstallation finished succesfully"
+  exit 0
+fi
