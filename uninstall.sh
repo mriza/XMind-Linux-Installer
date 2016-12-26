@@ -1,34 +1,42 @@
 #!/bin/bash
 USER=$1
 status_flag=0
-echo "Uninstalling\n"
+echo "Uninstalling XMind"
 echo "Removing files..."
-rm -rfv /opt/xmind/
+rm -rf /opt/xmind/
 if [ $? != 0 ]
 then
   status_flag=1
   echo "Failed"
+else
+  echo "OK"
 fi
 echo "Removing user data..."
-rm -rfv /home/$USER/workspace
+rm -rf /home/$USER/workspace
 if [ $? != 0 ]
 then
   status_flag=1
   echo "Failed"
+else
+  echo "OK"
 fi
 echo "Removing configs..."
-rm -rfv /home/$USER/.configuration
+rm -rf /home/$USER/.configuration
 if [ $? != 0 ]
 then
   status_flag=1
   echo "Failed"
+else
+  echo "OK"
 fi
 echo "Removing launcher..."
-rm -rfv /usr/share/applications/xmind8.desktop
+rm -rf /usr/share/applications/xmind8.desktop
 if [ $? != 0 ]
 then
   status_flag=1
   echo "Failed"
+else
+  echo "OK"
 fi
 if [ $status_flag != 0 ]
 then
