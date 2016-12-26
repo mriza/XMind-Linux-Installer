@@ -1,4 +1,10 @@
 #!/bin/bash
+if [ -z "$1" ]
+then
+	echo "USAGE:
+	sudo xmind-installer.sh username"
+	exit 1
+fi
 USER=$1
 status_flag=0
 echo "Uninstalling XMind"
