@@ -90,9 +90,9 @@ else
 fi
 
 echo "Creating workspaces..."
-mkdir /home/$USER/{workspace,.configuration}
-cp -R $BIN_DIR/configuration/* /home/$USER/.configuration
-chown -R $USER: /home/$USER/workspace /home/$USER/.configuration
+mkdir /home/$1/{workspace,.configuration}
+cp -R $BIN_DIR/configuration/* /home/$1/.configuration
+chown -R $1: /home/$1/workspace /home/$1/.configuration
 if [ $? != 0 ]
 then
   status_flag=1
