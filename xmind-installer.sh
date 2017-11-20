@@ -40,7 +40,7 @@ else
 fi
 
 echo "Extracting files..."
-unzip -q xmind-8-update4-linux.zip -d xmind
+unzip -q xmind-8-update5-linux.zip -d xmind
 if [ $? != 0 ]
 then
   status_flag=1
