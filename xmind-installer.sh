@@ -72,15 +72,17 @@ else
 fi
 
 echo "Creating laucher..."
-echo "" > /usr/share/applications/xmind8.desktop
-echo "[Desktop Entry]" >> /usr/share/applications/xmind8.desktop
-echo "Comment=Create and share mind maps." >> /usr/share/applications/xmind8.desktop
-echo "Exec=$BIN_DIR/XMind %F" >> /usr/share/applications/xmind8.desktop
-echo "Name=XMind" >> /usr/share/applications/xmind8.desktop
-echo "Terminal=false" >> /usr/share/applications/xmind8.desktop
-echo "Type=Application" >> /usr/share/applications/xmind8.desktop
-echo "Categories=Office;" >> /usr/share/applications/xmind8.desktop
-echo "Icon=xmind" >> /usr/share/applications/xmind8.desktop
+cat << EOF | tee /usr/share/applications/xmind8.desktop
+[Desktop Entry]
+Comment=Create and share mind maps.
+Exec=$BIN_DIR/XMind %F
+Name=XMind
+Terminal=false
+Type=Application
+Categories=Office;
+Icon=xmind
+EOF
+
 if [ $? != 0 ]
 then
   status_flag=1
@@ -105,12 +107,23 @@ echo "Post installation configurations..."
 sed -i "s/\.\.\/workspace/@user\.home\/workspace/g" "$BIN_DIR/XMind.ini"
 sed -i "s/\.\/configuration/@user\.home\/\.configuration/g" "$BIN_DIR/XMind.ini"
 sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
+
+cat EOF << | tee /opt/xmind/XMind_amd64/XMind.ini
+-vmargs
+--add-modules=java.se.ee
+-Dosgi.requiredJavaVersion=1.8
+-Xms256m
+-Xmx1024m
+EOF
+
 echo "...Updating MIME database"
 cp xmind.xml /usr/share/mime/packages/
 update-mime-database /usr/share/mime
+
 echo "...Adding icon"
 cp xmind.svg /usr/share/icons/hicolor/scalable/mimetypes
 gtk-update-icon-cache /usr/share/icons/hicolor/ -f
+
 if [ $? != 0 ]
 then
   status_flag=1
