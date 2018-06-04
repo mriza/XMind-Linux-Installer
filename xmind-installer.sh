@@ -108,7 +108,7 @@ sed -i "s/\.\.\/workspace/@user\.home\/workspace/g" "$BIN_DIR/XMind.ini"
 sed -i "s/\.\/configuration/@user\.home\/\.configuration/g" "$BIN_DIR/XMind.ini"
 sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
 
-cat EOF << | tee /opt/xmind/XMind_amd64/XMind.ini
+cat << EOF | tee /opt/xmind/XMind_amd64/XMind.ini
 -vmargs
 --add-modules=java.se.ee
 -Dosgi.requiredJavaVersion=1.8
