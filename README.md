@@ -15,3 +15,5 @@ username is the user that will be use/run the software. Because XMind will need 
 This script is an automation of [this process](http://www.xmind.net/m/PuDC)
 
 ![process](https://xmindshare.s3.amazonaws.com/preview/PuDC-FwEzHqO-77495.png)
+
+Icon : http://www.iconarchive.com/show/papirus-apps-icons-by-papirus-team/xmind-icon.html

@@ -108,6 +108,9 @@ sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
 echo "...Updating MIME database"
 cp xmind.xml /usr/share/mime/packages/
 update-mime-database /usr/share/mime
+echo "...Adding icon"
+cp xmind.svg /usr/share/icons/hicolor/scalable/mimetypes
+gtk-update-icon-cache /usr/share/icons/hicolor/ -f
 if [ $? != 0 ]
 then
   status_flag=1
