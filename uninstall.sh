@@ -27,7 +27,7 @@ else
   echo "OK"
 fi
 echo "Removing configs..."
-rm -rf /home/$USER/.configuration
+rm -rf /home/$USER/{.configuration,p2}
 if [ $? != 0 ]
 then
   status_flag=1
@@ -37,6 +37,16 @@ else
 fi
 echo "Removing launcher..."
 rm -rf /usr/share/applications/xmind8.desktop
+if [ $? != 0 ]
+then
+  status_flag=1
+  echo "Failed"
+else
+  echo "OK"
+fi
+echo "...Updating MIME database"
+rm /usr/share/mime/packages/xmind.xml
+update-mime-database /usr/share/mime
 if [ $? != 0 ]
 then
   status_flag=1
