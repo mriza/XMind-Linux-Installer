@@ -101,10 +101,13 @@ else
   echo "OK"
 fi
 
-echo "Post installatin configurations..."
+echo "Post installation configurations..."
 sed -i "s/\.\.\/workspace/@user\.home\/workspace/g" "$BIN_DIR/XMind.ini"
 sed -i "s/\.\/configuration/@user\.home\/\.configuration/g" "$BIN_DIR/XMind.ini"
 sed -i "s/^\.\./\/opt\/xmind/g" "$BIN_DIR/XMind.ini"
+echo "...Updating MIME database"
+cp xmind.xml /usr/share/mime/packages/
+update-mime-database /usr/share/mime
 if [ $? != 0 ]
 then
   status_flag=1
