@@ -76,12 +76,11 @@ cnfg(){
 }
 
 ubuntu_bb(){
-	cat << EOF >> $BIN_DIR/XMind.ini
-	-vmargs
-	--add-modules=java.se.ee
-	-Dosgi.requiredJavaVersion=1.8
-	-Xms256m
-	-Xmx1024m
+cat << EOF >> $BIN_DIR/XMind.ini
+--add-modules=java.se.ee
+-Dosgi.requiredJavaVersion=1.8
+-Xms256m
+-Xmx1024m
 EOF
 }
 
