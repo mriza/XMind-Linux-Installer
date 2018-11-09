@@ -41,7 +41,7 @@ fi
 xtrct(){
 	echo "Extracting files..."
 	mkdir -p /opt/xmind
-	unzip -q xmind-8-update7-linux.zip -d /opt/xmind
+	unzip -q xmind-8-update8-linux.zip -d /opt/xmind
 }
 
 fnt(){
@@ -52,7 +52,7 @@ fnt(){
 }
 
 lnchr(){
-	echo "Creating laucher..."
+	echo "Creating launcher..."
 	cat << EOF >> /usr/share/applications/xmind8.desktop
 	[Desktop Entry]
 	Comment=Create and share mind maps.
@@ -100,7 +100,7 @@ then
 	cnfg $1
 	mimeicns
 	while true; do
-    read -p "Do you installing in Ubuntu 18.04 or its derivative (y/n)?" yn
+    read -p "Are you installing in Ubuntu 18.04 or its derivative (y/n)?" yn
     case $yn in
         [Yy]* ) ubuntu_bb; break;;
         [Nn]* ) exit;;
@@ -109,6 +109,6 @@ then
 	done
 	echo "Installation finished. Happy mind mapping!"
 else
-	echo "Instalation failed"
+	echo "Installation failed"
 	exit 1
 fi
