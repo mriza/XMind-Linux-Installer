@@ -62,6 +62,7 @@ lnchr(){
 	Type=Application
 	Categories=Office;
 	Icon=xmind
+	MimeType=application/mindmap
 EOF
 }
 
