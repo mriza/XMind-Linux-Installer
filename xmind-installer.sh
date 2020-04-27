@@ -20,16 +20,18 @@ XMIND_DIR="/opt/xmind"
 if [ $ARCH == "x86_64" ]
 then
 	VERSION="XMind_amd64"
-	BIN_DIR=$XMIND_DIR/$VERSION
+elif [ $ARCH == "aarch64" ]
+then
+	VERSION="XMind_amd64"
 elif [ $ARCH == "i686" ]
 then
 	VERSION="XMind_i386"
-	BIN_DIR=$XMIND_DIR/$VERSION
 else
 	echo 'Sorry, cannot verify your OS architecture'
 	echo 'The installer will now exit'
 	exit 1
 fi
+BIN_DIR=$XMIND_DIR/$VERSION
 
 if [ -z "$1" ]
 then
