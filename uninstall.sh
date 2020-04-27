@@ -18,7 +18,7 @@ else
   echo "OK"
 fi
 echo "Removing user data..."
-rm -rf /home/$USER/workspace
+rm -rf /home/$USER/.workspace
 if [ $? != 0 ]
 then
   status_flag=1

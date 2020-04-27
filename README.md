@@ -12,7 +12,7 @@ How to install XMind 8 on Linux
 4. Add execute permission to the installer script and run it,
    `chmod +x xmind-installer.sh`; `sudo ./xmind-installer.sh username`
 
-username is the user that will be use/run the software. Because XMind will need a data directory in the user home named 'workspace'
+username is the user that will be use/run the software. Because XMind will need a data directory in the user home named '.workspace'
 
 This script is an automation of [this process](http://www.xmind.net/m/PuDC)
 
