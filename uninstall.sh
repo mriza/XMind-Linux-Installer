@@ -1,10 +1,13 @@
 #!/bin/bash
-if [ -z "$1" ]
-then
+usage(){
 	echo "USAGE:
-	sudo xmind-installer.sh username"
+	sudo uninstall.sh username"
 	exit 1
-fi
+}
+# Must be run as root
+if [ "$EUID" -ne 0 ]; then usage; fi
+# Must specify username
+if [ -z "$1" ]; then usage; fi
 USER=$1
 status_flag=0
 echo "Uninstalling XMind"
