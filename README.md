@@ -19,3 +19,24 @@ This script is an automation of [this process](http://www.xmind.net/m/PuDC)
 ![process](https://xmindshare.s3.amazonaws.com/preview/PuDC-FwEzHqO-77495.png)
 
 Icon : http://www.iconarchive.com/show/papirus-apps-icons-by-papirus-team/xmind-icon.html
+
+## Troubleshooting
+
+### JVM terminated. Exit code=1
+
+From [Github issue 18](https://github.com/mriza/XMind-Linux-Installer/issues/18)
+
+```bash
+sudo apt-get install -y openjdk-8-jre
+sudo update-alternatives --config java
+```
+
+Select OpenJDK 8
+
+Remove `--add-modules=java.se.ee` from `XMind.ini`
+
+```bash
+sudo su -
+config="/opt/xmind/XMind_amd64/XMind.ini"
+mv "$config" "$config.bak" && grep -v "add-modules" "$config.bak" > "$config"
+```
