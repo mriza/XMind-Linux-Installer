@@ -13,7 +13,7 @@
 ## 2. don't forget to pass the user of the program in the command argument
 ##
 ## example
-## sudo bash xmind8-installer.sh mriza
+## sudo bash xmind-installer.sh mriza
 
 ARCH=`uname -m`
 XMIND_DIR="/opt/xmind"
@@ -33,12 +33,16 @@ else
 fi
 BIN_DIR=$XMIND_DIR/$VERSION
 
-if [ -z "$1" ]
-then
+usage(){
 	echo "USAGE:
 	sudo xmind-installer.sh username"
-  exit 1
-fi
+	exit 1
+}
+# Must be run as root
+if [ "$EUID" -ne 0 ]; then usage; fi
+
+# Must specify username
+if [ -z "$1" ]; then usage; fi
 
 xtrct(){
 	echo "Extracting files..."
@@ -103,7 +107,7 @@ then
 	cnfg $1
 	mimeicns
 	while true; do
-    read -p "Are you installing in Ubuntu 18.04 or its derivative (y/n)?" yn
+    read -p "Are you installing in Ubuntu 18.04 or its derivative (y/n)? " yn
     case $yn in
         [Yy]* ) ubuntu_bb; break;;
         [Nn]* ) exit;;
